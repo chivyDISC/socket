@@ -15,7 +15,7 @@ def handle_message(msg):
     db.commit()
     send(msg, broadcast=True)
 
-@app.route('/')
+@app.route("/")
 def index():
     messages = Message.query.all()
-    return render_template('index.html', messages = messages)
+    return render_template("index.html", messages = messages)
