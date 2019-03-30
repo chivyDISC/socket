@@ -6,6 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class Message(db.Model):
-    __tablename__ = "message"
+    __tablename__ = "messages"
     id = db.Column(db.Integer, primary_key = True)
     message = db.Column(db.String, nullable = False)
