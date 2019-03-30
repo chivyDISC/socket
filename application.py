@@ -12,7 +12,7 @@ db.init_app(app)
 def handle_message(msg):
     message = Message(message = msg)
     db.session.add(message)
-    db.commit()
+    db.session.commit()
     send(msg, broadcast=True)
 
 @app.route("/")
