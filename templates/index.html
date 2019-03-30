@@ -30,10 +30,12 @@
         
         });
         </script>
-        {% for message in messages %}
-            <ul>{{message.message}}</ul>
-        {% endfor %}
-        <ul id="messages"></ul>
+        <ul id="messages">
+            {% for message in messages %}
+                <li>{{message.message}}</li>
+            {% endfor %}
+ 
+        </ul>
         <input type="text" id="myMessage">
         <button id="sendbutton">Send</button>
     
