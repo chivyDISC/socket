@@ -20,7 +20,7 @@
             });
         
             socket.on('message', function(msg) {
-                $("#messages").append('<li class="list-group-item">'+msg+'</li>');
+                $("#messages").append('<h5>'+msg+'</h5>');
                 console.log('Received message');
             });
         
@@ -34,12 +34,11 @@
     <div class="container">
         <div class="row">
                 <div class="col-md-8">
-                    <div data-spy="scroll" data-offset="0" class="scrollspy-example">
-                        <ul id="messages" class="list-group">
+                    <div data-spy="scroll" id="messages">
                             {% for message in messages %}
-                                <li class="list-group-item">{{message.message}}</li>
+                                <h5>{{message.message}}</h5>
+                                <hr>
                             {% endfor %}
-                        </ul>
                     </div>
                     <div class="input-group mb-3">
                         <input type="text" id="myMessage" class="form-control" placeholder="Nhập tin nhắn vào đây..." aria-label="Recipient's username" aria-describedby="button-addon2">
