@@ -25,7 +25,7 @@
             var socket = io.connect('https://disc-webchat.herokuapp.com');
         
             socket.on('message', function(msg) {
-                $("#messages").append('<p>'+msg+'</p>');
+                $("#messages").append(msg);
             });
             $('#sendbutton').on('click', function() {
                 socket.send($('#myMessage').val());
@@ -39,7 +39,7 @@
                 <div class="col-md-8">
                     <textarea id="messages" >
                             {% for message in messages %}
-                                <p>{{message.id}}. {{message.message}}</p>
+                                {{message.message}}
                             {% endfor %}
                     </textarea>
                     <div class="input-group mb-3">
