@@ -8,9 +8,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 socket = SocketIO(app)
 db.init_app(app)
 
-@socketio.on('my event')
-def handle_my_custom_event(json):
-    emit('my response', json)
 @socket.on('message')
 def handle_message(msg):
     message = Message(message = msg)
