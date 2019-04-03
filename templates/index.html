@@ -15,15 +15,13 @@
         
             var socket = io.connect('https://disc-webchat.herokuapp.com');
         
-            socket.on('connect', function() {
-                socket.send('User has connected!');
+            socket.on('connect', function(con) {
+                $('#online').append('<p>Có người online</p>')
             });
         
             socket.on('message', function(msg) {
                 $("#messages").append('<p>'+msg+'</p>');
-                console.log('Received message');
             });
-        
             $('#sendbutton').on('click', function() {
                 socket.send($('#myMessage').val());
                 $('#myMessage').val('');
@@ -47,7 +45,7 @@
                     </div>
                 </div>
             <div class="col-md-4">
-
+                <div id="online"></div>
             </div>
         </div>
     </div>

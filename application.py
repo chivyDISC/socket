@@ -7,7 +7,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 socket = SocketIO(app)
 db.init_app(app)
-
+@socket.on('connect')
+def handle_connect(con):
+    send(con, broadcast=True)
 @socket.on('message')
 def handle_message(msg):
     message = Message(message = msg)
