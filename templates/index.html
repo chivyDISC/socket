@@ -16,9 +16,11 @@
             var socket = io.connect('https://disc-webchat.herokuapp.com');
         
             socket.on('connect', function() {
-                $('#online').append('<p>Có người online</p>')
+                socket.emit('my event', {data: 'I\'m connected!'});
             });
-        
+            socket.on('my event', function(){
+                $("#online").append('<p>'+json+'</p>')
+            });
             socket.on('message', function(msg) {
                 $("#messages").append('<p>'+msg+'</p>');
             });
