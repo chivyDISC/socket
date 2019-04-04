@@ -26,6 +26,9 @@
             socket.on('connect', function() {
                 socket.emit('my event', {data: 'I\'m connected!'});
             });
+            socket.on('my event',function(json){
+                $("#online").append(json);
+            });
             socket.on('message', function(msg) {
                 $("#messages").append(msg);
             });

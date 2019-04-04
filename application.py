@@ -17,7 +17,7 @@ def handle_message(msg):
 
 @socket.on('my event', namespace='/test')
 def handle_my_custom_namespace_event(json):
-    print('received json: ' + str(json))
+    emit('my response', json, broadcast = True)
 
 @app.route("/")
 def index():
