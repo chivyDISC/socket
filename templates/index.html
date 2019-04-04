@@ -24,9 +24,9 @@
         
             var socket = io.connect('https://disc-webchat.herokuapp.com/');
             socket.on('connect', function() {
-                socket.emit('my event', 'user has connected');
+                socket.send('my event', 'user has connected');
             });
-            socket.on('my event',function(user){
+            socket.on('my response',function(user){
                 $("#online").append('<p>' + user + '</p>');
             });
             socket.on('message', function(msg) {
