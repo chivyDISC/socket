@@ -16,8 +16,8 @@ def handle_message(msg):
     send(msg, broadcast=True)
 
 @socket.on('my event', namespace='/test')
-def handle_my_custom_namespace_event(json):
-    emit('my response', json, broadcast = True)
+def handle_my_custom_namespace_event(user):
+    send('my response', user, broadcast = True)
 
 @app.route("/")
 def index():
