@@ -23,7 +23,9 @@
         $(document).ready(function() {
         
             var socket = io.connect('https://disc-webchat.herokuapp.com/');
-        
+            socket.on('connect', function() {
+                socket.emit('my event', {data: 'I\'m connected!'});
+            });
             socket.on('message', function(msg) {
                 $("#messages").append(msg);
             });
