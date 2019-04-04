@@ -24,10 +24,11 @@
         
             var socket = io.connect('https://disc-webchat.herokuapp.com/');
             socket.on('connect', function() {
-                socket.send('my event', 'user has connected');
+                socket.emit('gui', 'user has connected');
             });
-            socket.on('my response',function(user){
-                $("#online").append('<p>' + user + '</p>');
+            
+            socket.on('phanhoi', function(tin){
+                $("#online").append('<div>' + tin + '</div>');
             });
             socket.on('message', function(msg) {
                 $("#messages").append(msg);
