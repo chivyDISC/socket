@@ -8,14 +8,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 socket = SocketIO(app)
 db.init_app(app)
 
-@socketio.on('message')
+@socket.on('message')
 def handle_message(msg):
     message = Message(message = msg)
     db.session.add(message)
     db.session.commit()
     send(msg, broadcast=True)
 
-@socketio.on('my event', namespace='/test')
+@socket.on('my event', namespace='/test')
 def handle_my_custom_namespace_event(json):
     print('received json: ' + str(json))
 
